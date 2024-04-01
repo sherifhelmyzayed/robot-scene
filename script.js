@@ -51,7 +51,7 @@ scene.add(light);
 
 //camera
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
-camera.position.set(-1, -1, 10);
+camera.position.set(0, -0.5, 10);
 camera.rotation.y = -0.05
 camera.rotation.x = 0.15
 scene.add(camera);
