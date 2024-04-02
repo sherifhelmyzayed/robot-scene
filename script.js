@@ -51,9 +51,9 @@ scene.add(light);
 
 //camera
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
-camera.position.set(0, -0.5, 10);
+camera.position.set(-2, -0.5, 10);
 camera.rotation.y = -0.05
-camera.rotation.x = 0.15
+camera.rotation.x = 0.8
 scene.add(camera);
 scene.background = new THREE.Color('black')
 
@@ -64,10 +64,12 @@ const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true 
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.innerWidth / window.innerHeight);
+// renderer.setPixelRatio(window.innerWidth / window.innerHeight);
 renderer.render(scene, camera);
+renderer.setPixelRatio(window.devicePixelRatio)
 // Orbit controls
 controls = new OrbitControls(camera, canvas);
+console.log(controls)
 
 controls.update();
 
@@ -80,9 +82,9 @@ function animate() {
 
 const onWindowResize = () => {
     camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.innerWidth / window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio)
+    camera.updateProjectionMatrix();
 
     dynamicCamera();
     controls.update();
